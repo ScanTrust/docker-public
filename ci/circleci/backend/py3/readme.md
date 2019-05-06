@@ -17,10 +17,12 @@ and is intended for use on circle-ci.  It is based on `circleci/python:3.6.4-str
 Documentation for the forgeful amongst us:
 
 ```sh
+docker login 
+
 docker build -t stbe3 .
 docker tag stbe3:latest scantrust/ci-circleci-backend-py3:latest
 docker push scantrust/ci-circleci-backend-py3:latest
 
 # run locally to test
-docker run -it stbe
+docker run --rm -it stbe
 ```
