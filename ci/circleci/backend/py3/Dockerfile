@@ -1,16 +1,16 @@
-FROM circleci/python:3.7.3-stretch 
-# we use slim-stretch for our backend images, but circle-ci does not have it!
+FROM circleci/python:3.8.0-buster
 
 USER root
 
 RUN \
     apt-get update \
 &&  wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - \
-&&  sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ stretch-pgdg main" > /etc/apt/sources.list.d/PostgreSQL.list' \
+&&  sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ buster-pgdg main" > /etc/apt/sources.list.d/PostgreSQL.list' \
 &&  apt-get update \
 &&  apt-get install -y apt-utils \
-&&  apt-get install -y libopenblas-dev liblapack-dev libpq-dev libffi-dev libgeos-dev \
-&&  apt-get install -y postgresql-client-10 \
+&&  apt-get install -y file binutils libgeos-dev gcc libpq-dev libjpeg-dev zlib1g-dev libtiff5-dev \
+&&  apt-get install -y postgresql-client-11 \
+&&  pip install --upgrade pip setuptools wheel \
 &&  pip install pipenv
 
 USER circleci
