@@ -1,6 +1,8 @@
-FROM circleci/python:3.8.0-buster
+FROM circleci/python:3.8.6-buster
 
 USER root
+
+# libgomp1 -> base library for `onnxyruntime` py library used by core (https://github.com/microsoft/onnxruntime)
 
 RUN \
     apt-get update \
@@ -9,7 +11,8 @@ RUN \
 &&  apt-get update \
 &&  apt-get install -y apt-utils \
 &&  apt-get install -y file binutils libgeos-dev gcc libpq-dev libjpeg-dev zlib1g-dev libtiff5-dev \
-&&  apt-get install -y postgresql-client-11 \
+&&  apt-get install -y libgomp1  \
+&&  apt-get install -y postgresql-client-12 \
 &&  pip install --upgrade pip setuptools wheel \
 &&  pip install pipenv
 
