@@ -1,9 +1,9 @@
 # ScanTrust Backend Image for CircleCI
 
 This is a simple Python 2 based image with the necessary libs pre-istalled
-and is intended for use on circle-ci.  It is based on `circleci/python:3.6.4-stretch`
+and is intended for use on circle-ci.  It is based on `circleci/python:3.x-buster`
 
- * Installs the `postgresql-client-9.6` deb
+ * Installs the `postgresql-client-12`
  * Installs scientific libs needed (or helpful for speed)
  * Installs `libgeos`
 
@@ -19,10 +19,10 @@ Documentation for the forgeful amongst us:
 ```sh
 docker login 
 
-docker build -t stbe3 .
-docker tag stbe3:latest scantrust/ci-circleci-backend-py3:latest
-docker push scantrust/ci-circleci-backend-py3:latest
+export TAG={SET-TAG}
+docker build -t scantrust/ci-circleci-backend-py3:${TAG} .
+docker push scantrust/ci-circleci-backend-py3:scantrust/ci-circleci-backend-py3:${TAG}
 
 # run locally to test
-docker run --rm -it stbe
+docker run --rm -it scantrust/ci-circleci-backend-py3:${TAG}
 ```
