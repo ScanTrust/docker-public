@@ -1,4 +1,4 @@
-FROM circleci/python:3.8.6-buster
+FROM cimg/python:3.10.2
 
 USER root
 
