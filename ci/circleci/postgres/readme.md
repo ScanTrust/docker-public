@@ -29,10 +29,10 @@ judicious naming), the extensions are there too.
 Documentation for the forgeful amongst us:
 
 ```sh
-docker build -t stpg .
-docker tag stpg:latest scantrust/ci-circleci-postgres:9.6.6
-docker push scantrust/ci-circleci-postgres:9.6.6
+export CI_PG_IMAGE=scantrust/ci-circleci-postgres:<VERSION>
+docker build -t ${CI_PG_IMAGE} .
+docker push     ${CI_PG_IMAGE}
 
 # run locally to test
-docker run -it stpg
+docker run -it ${CI_PG_IMAGE}
 ```

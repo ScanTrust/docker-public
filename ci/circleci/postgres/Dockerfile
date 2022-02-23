@@ -3,6 +3,6 @@
 # installs hstore and uuid-ossp extensions into `template` and `$POSTGRES_DB`
 #
 
-FROM circleci/postgres:10.7
+FROM cimg/postgres:12.9
 
 COPY add-extensions.sh /docker-entrypoint-initdb.d/add-extensions.sh

@@ -21,7 +21,7 @@ docker login
 
 export TAG={SET-TAG}
 docker build -t scantrust/ci-circleci-backend-py3:${TAG} .
-docker push scantrust/ci-circleci-backend-py3:scantrust/ci-circleci-backend-py3:${TAG}
+docker push     scantrust/ci-circleci-backend-py3:${TAG}
 
 # run locally to test
 docker run --rm -it scantrust/ci-circleci-backend-py3:${TAG}
